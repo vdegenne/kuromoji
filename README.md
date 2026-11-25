@@ -26,7 +26,7 @@ This makes the dictionaries available under `/dict/`, which is the default dicti
 
 ### Why uncompressed dictionaries?
 
-Keeping the dictionaries uncompressed gives your application control over how they are delivered.
+Keeping the dictionaries uncompressed gives your application control over how they are delivered, and a better tokenizer loading time.
 
 For websites, it is generally preferable to serve dictionary files using HTTP compression (Brotli or gzip), allowing the browser to receive smaller responses without requiring the package to ship compressed files.
 
