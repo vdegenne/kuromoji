@@ -10,6 +10,19 @@ The package is primarily intended for web applications that want to control how 
 npm install @vdegenne/kuromoji
 ```
 
+If you are using the package in your browser, add a path resolution. E.g. with Vite
+
+```json
+resolve: {
+		alias: [
+			{
+				find: /^path$/,
+				replacement: 'path-browserify',
+			},
+		],
+	}
+```
+
 ## Dictionaries
 
 The package includes all 12 dictionary files in **uncompressed `.dat` format**.
@@ -30,7 +43,7 @@ Keeping the dictionaries uncompressed gives your application control over how th
 
 For websites, it is generally preferable to serve dictionary files using HTTP compression (Brotli or gzip), allowing the browser to receive smaller responses without requiring the package to ship compressed files.
 
-It is also useful for Progressive Web Apps (PWA): you can add the compressed dictionary assets to your service worker's precache or runtime cache. This allows the dictionaries to be cached efficiently and reused between visits.
+It is also useful for Progressive Web Apps (PWA): you can add the compressed dictionary assets to your service worker's precache or runtime cache (add `dat` to the list of precached files). This allows the dictionaries to be cached efficiently and reused between visits.
 
 ### Using `.gz` dictionaries
 

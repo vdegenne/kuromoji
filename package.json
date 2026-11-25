@@ -1,6 +1,6 @@
 {
 	"name": "@vdegenne/kuromoji",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"description": "Kuromoji.js wrapper with bundled, uncompressed dictionaries and Japanese-to-Hiragana conversion.",
 	"repository": {
 		"type": "git",
