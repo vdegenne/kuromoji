@@ -1,0 +1,63 @@
+{
+	"name": "@vdegenne/kuromoji",
+	"version": "0.1.0",
+	"description": "Kuromoji.js wrapper with bundled, uncompressed dictionaries and Japanese-to-Hiragana conversion.",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/vdegenne/kuromoji.git"
+	},
+	"homepage": "https://github.com/vdegenne/kuromoji#readme",
+	"bugs": {
+		"url": "https://github.com/vdegenne/kuromoji/issues"
+	},
+	"type": "module",
+	"main": "./lib/index.js",
+	"types": "./lib/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./lib/index.d.ts",
+			"import": "./lib/index.js"
+		}
+	},
+	"files": [
+		"lib/",
+		"dict/"
+	],
+	"scripts": {
+		"build": "wireit"
+	},
+	"wireit": {
+		"copy-dict": {
+			"command": "node ./scripts/copy-dict.js",
+			"files": [
+				"./scripts/copy-dict.js",
+				"./node_modules/kuromoji/dict/*.dat.gz"
+			],
+			"output": [
+				"./dict/*.dat"
+			]
+		},
+		"build": {
+			"command": "tsc --pretty",
+			"dependencies": [
+				"copy-dict"
+			],
+			"clean": "if-file-deleted",
+			"files": [
+				"./tsconfig.json",
+				"./src"
+			],
+			"output": [
+				"./lib"
+			]
+		}
+	},
+	"devDependencies": {
+		"kuromoji": "^0.1.2",
+		"typescript": "^7.0.2",
+		"wireit": "^0.15.0"
+	},
+	"dependencies": {
+		"@vdegenne/kuromoji-core": "^0.1.5"
+	}
+}
